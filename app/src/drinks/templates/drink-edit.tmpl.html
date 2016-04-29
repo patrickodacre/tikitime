@@ -1,0 +1,28 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h1>Edit {{ctrl.drinkToEdit.name}}:</h1>
+	</div>
+</md-toolbar>
+<md-content class="md-no-momentum">
+	<div layout="column" ng-cloak>
+		<md-content class="md-padding">
+
+			<form
+					role="form"
+					ng-submit="ctrl.updateDrink(ctrl.drinkToEdit)"
+			>
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Edit Name</label>
+					<input ng-model="ctrl.drinkToEdit.name">
+				</md-input-container>
+			</form>
+		</md-content>
+	</div>
+
+
+	<md-button class="md-raised"
+			   ng-click="ctrl.updateDrink(ctrl.drinkToEdit); ctrl.close('right')">
+		Save
+	</md-button>
+	<md-button class="md-raised" ng-click="ctrl.deleteDrink(ctrl.drinkToEdit)">Delete</md-button>
+</md-content>

@@ -1,0 +1,46 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h1>Edit Your Order:</h1>
+	</div>
+</md-toolbar>
+<md-content class="md-no-momentum">
+	<div layout="column" ng-cloak>
+		<md-content class="md-padding">
+
+			<form
+					role="form"
+					ng-submit="ctrl.updateOrder(ctrl.orderToEdit)"
+			>
+				<p class="md-caption">The Order is currently assigned to: {{ ctrl.orderToEdit.ordered_by }}</p>
+
+				<md-select placeholder="Assign to user" ng-model="ctrl.orderToEdit.ordered_by"
+						   md-on-open="ctrl.loadPeople()"
+						   style="min-width: 200px;">
+					<div ng-repeat="person in ctrl.people">
+						<md-option ng-value="person.name">{{person.name}}</md-option>
+					</div>
+				</md-select>
+				<p class="md-caption">You have reassigned it to: {{ ctrl.orderToEdit.ordered_by }}</p>
+
+				<div ng-repeat="drink in ctrl.drinks">
+					<md-checkbox ng-model="ctrl.orderToEdit.drinks[drink.name]">
+						{{ drink.name }}
+					</md-checkbox>
+				</div>
+
+				<p>You have requested that the booze be ready for {{ctrl.orderToEdit.tikitime}}</p>
+				<strong><p>Do you want to change it?</p></strong>
+				<md-datepicker ng-model="ctrl.orderToEdit.tikitime" md-placeholder="Choose a date"
+							   md-min-date="ctrl.minDate"></md-datepicker>
+			</form>
+		</md-content>
+	</div>
+
+	<div class="orderEdit__buttons">
+		<md-button class="md-raised" ng-click="ctrl.updateOrder(ctrl.orderToEdit); ctrl.close('right')">
+			Update
+		</md-button>
+		<md-button class="md-raised" ui-sref="orders.home" ui-sref-opts="{reload:true}" ng-click="ctrl.close('right'); ctrl.resetOrderToEdit()">Cancel</md-button>
+		<md-button class="md-raised" ng-click="ctrl.deleteOrder(ctrl.orderToEdit)">Delete</md-button>
+	</div>
+</md-content>

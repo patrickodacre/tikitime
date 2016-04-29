@@ -1,0 +1,30 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h1>Add a new Person:</h1>
+	</div>
+</md-toolbar>
+<md-content class="md-no-momentum">
+	<div layout="column" ng-cloak>
+		<md-content class="md-padding">
+
+			<form
+					role="form"
+					ng-submit="ctrl.addPerson(ctrl.newPerson)"
+			>
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Your Name</label>
+					<input ng-model="ctrl.newPerson.name">
+				</md-input-container>
+				<md-input-container md-no-float class="md-block">
+					<input ng-model="ctrl.newPerson.bio" placeholder="A short something about yourself:">
+				</md-input-container>
+			</form>
+		</md-content>
+	</div>
+
+
+	<md-button class="md-raised"
+			   ng-click="ctrl.addPerson(ctrl.newPerson); ctrl.close('right')">
+		Save
+	</md-button>
+</md-content>

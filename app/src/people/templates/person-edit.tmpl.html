@@ -1,0 +1,32 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h1>Edit {{ctrl.personToEdit.name}}:</h1>
+	</div>
+</md-toolbar>
+<md-content class="md-no-momentum">
+	<div layout="column" ng-cloak>
+		<md-content class="md-padding">
+
+			<form
+					role="form"
+					ng-submit="ctrl.addPerson(ctrl.newPerson)"
+			>
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Edit Name</label>
+					<input ng-model="ctrl.personToEdit.name">
+				</md-input-container>
+				<md-input-container md-no-float class="md-block">
+					<label>Edit Bio</label>
+					<input ng-model="ctrl.personToEdit.bio">
+				</md-input-container>
+			</form>
+		</md-content>
+	</div>
+
+
+	<md-button class="md-raised"
+			   ng-click="ctrl.updatePerson(ctrl.personToEdit); ctrl.close('right')">
+		Save
+	</md-button>
+	<md-button class="md-raised" ng-click="ctrl.deletePerson(ctrl.personToEdit)">Delete</md-button>
+</md-content>

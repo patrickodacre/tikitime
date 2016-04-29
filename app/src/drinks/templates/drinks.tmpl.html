@@ -1,0 +1,24 @@
+<md-button class="md-raised" ui-sref="drinks.add-drink" ng-click="ctrl.open('right')">New Drink</md-button>
+
+<h1>Drinks:</h1>
+<div class="orderFilter">
+	<div class="orderFilter__name">
+		<label for="name">Filter By Name:</label>
+		<input id="name" type="search" ng-model="searchText" placeholder="filter names..." aria-label="filter names"/>
+	</div>
+</div>
+<div ng-repeat="drink in ctrl.drinks | filter:{name:searchText}" class="drinkCards">
+	<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch class="drinkCards__card" flex="100" flex-gt-sm="50">
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">{{drink.name}}</span>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button ui-sref="drinks.edit-drink"
+					   ng-click="ctrl.editDrink(drink); ctrl.open('right')">
+				Edit Drink
+			</md-button>
+		</md-card-actions>
+	</md-card>
+</div>

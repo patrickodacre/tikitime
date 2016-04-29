@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Angular Material - Starter App</title>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="">
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+	<link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
+	<link rel="stylesheet" href="../node_modules/angular-material/angular-material.css"/>
+	<link rel="stylesheet" href="assets/app.css"/>
+	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+	<link rel="stylesheet" href="./src/css/app.css"/>
+
+	<style type="text/css">
+		/**
+		 * Hide when Angular is not yet loaded and initialized
+		 */
+		[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+			display: none !important;
+		}
+	</style>
+
+</head>
+
+<body ng-app="app" layout="column" ng-controller="MainCtrl as main" ng-cloak>
+
+<md-toolbar layout="row">
+	<md-button class="menu" hide-gt-sm ng-click="main.open('left')" aria-label="Show User List">
+		<md-icon md-svg-icon="menu"></md-icon>
+	</md-button>
+	<div class="md-toolbar-tools">
+		<h1><a ui-sref="orders.home">Tikitime</a></h1>
+	</div>
+	<!-- Fab Menu -->
+	<div class="lock-size fab-wrapper">
+		<md-fab-speed-dial md-open="main.isOpen" md-direction="{{main.selectedDirection}}"
+						   ng-class="main.selectedMode">
+			<md-fab-trigger>
+				<md-button aria-label="menu" class="md-fab md-accent" style="background: white;">
+					<md-icon md-svg-src="assets/svg/menu_black.svg"></md-icon>
+				</md-button>
+			</md-fab-trigger>
+			<md-fab-actions>
+				<md-button ui-sref="orders.home" aria-label="View Orders"
+						   class="md-fab md-raised md-mini">
+					<md-icon md-svg-src="assets/svg/write_black.svg" aria-label="Create an Order icon."></md-icon>
+				</md-button>
+				<md-button ui-sref="people.peoplelist" aria-label="Twitter"
+						   class="md-fab md-raised md-mini">
+					<md-icon md-svg-src="assets/svg/portrait_black.svg" aria-label="Twitter"></md-icon>
+				</md-button>
+
+				<md-button ui-sref="drinks.drinkshome" aria-label="Google Hangout"
+						   class="md-fab md-raised md-mini">
+					<md-icon md-svg-src="assets/svg/hangouts.svg" aria-label="Google Hangout"></md-icon>
+				</md-button>
+				<md-button class="md-fab md-raised md-mini" ng-click="main.makeContact(main.selected)"
+						   aria-label="Share with {{ main.selected.name }}">
+					<md-icon md-svg-icon="share_black"></md-icon>
+				</md-button>
+			</md-fab-actions>
+		</md-fab-speed-dial>
+	</div>
+
+</md-toolbar>
+
+<div flex layout="row" class="customflex">
+
+	<!-- Left Panel -->
+	<md-sidenav ng-click="main.open('left')" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left"
+				class="md-whiteframe-z2">
+		<md-content class="mainNavigation">
+			<md-button class="md-raised" ui-sref="people.peoplelist">People</md-button>
+			<md-button class="md-raised" ui-sref="orders.home">Orders</md-button>
+			<md-button class="md-raised" ui-sref="drinks.drinkshome">Drinks</md-button>
+		</md-content>
+	</md-sidenav>
+	<div style="width: 100%;">
+		<div ui-view>
+			Stuff will go here.
+		</div>
+	</div>
+
+</div>
+
+<script src="../node_modules/angular/angular.js"></script>
+<script src="../node_modules/angular-animate/angular-animate.js"></script>
+<script src="../node_modules/angular-aria/angular-aria.js"></script>
+<script type="text/javascript" src="../node_modules/angular-material/angular-material.js"></script>
+<script src="../node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../node_modules/angular-messages/angular-messages.min.js"></script>
+<!--<script src="../node_modules/firebase/lib/firebase-node.js"></script>-->
+
+<script src="./src/app.module.js"></script>
+<script src="./src/core/app.core.module.js"></script>
+<script src="./src/main/MainCtrl.js"></script>
+
+<script src="./src/api/dataService.js"></script>
+<script src="./src/services/formattingService.js"></script>
+<script src="./src/services/sideNavService.js"></script>
+<script src="./src/services/validationHelpers.js"></script>
+
+<script src="./src/orders/orders.module.js"></script>
+<script src="./src/orders/OrderCtrl.js"></script>
+
+<script src="./src/people/people.module.js"></script>
+<script src="./src/people/PeopleCtrl.js"></script>
+<script src="./src/drinks/drinks.module.js"></script>
+<script src="./src/drinks/DrinksCtrl.js"></script>
+
+</body>
+</html>

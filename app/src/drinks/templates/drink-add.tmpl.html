@@ -1,0 +1,27 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h1>Create a New Drink:</h1>
+	</div>
+</md-toolbar>
+<md-content class="md-no-momentum">
+	<div layout="column" ng-cloak>
+		<md-content class="md-padding">
+
+			<form
+					role="form"
+					ng-submit="ctrl.addDrink(ctrl.newDrink)"
+			>
+				<md-input-container class="md-block" flex-gt-sm>
+					<label>Drink Name</label>
+					<input ng-model="ctrl.newDrink.name">
+				</md-input-container>
+			</form>
+		</md-content>
+	</div>
+
+
+	<md-button class="md-raised" ui-sref="drinks.drinkshome" ui-sref-opts="{reload: true}"
+			   ng-click="ctrl.addDrink(ctrl.newDrink); ctrl.close('right')">
+		Save
+	</md-button>
+</md-content>

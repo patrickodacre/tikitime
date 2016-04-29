@@ -1,0 +1,56 @@
+/* Main Layout */
+
+#content {
+    width: 100%;
+}
+
+.customflex {
+    overflow: scroll !important;
+}
+
+/* ---------------------------------------------------------- */
+/* =======================  Main Order List: ======================= */
+/* ---------------------------------------------------------- */
+
+.orderFilter {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 500px;
+}
+
+.orderFilter__name,
+.orderFilter__drink {
+    margin-bottom: 2rem;
+}
+
+@media screen and (min-width: 490px) {
+    .orderFilter {
+        flex-direction: row;
+    }
+}
+
+/* ---------------------------------------------------------- */
+/* =======================  Editing Orders: ======================= */
+/* ---------------------------------------------------------- */
+
+.orderEdit__buttons {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+@media screen and (min-width: 490px) {
+    .orderEdit__buttons {
+        flex-direction: row;
+    }
+}
+
+/* ---------------------------------------------------------- */
+/* =======================  Drinks ======================= */
+/* ---------------------------------------------------------- */
+
+

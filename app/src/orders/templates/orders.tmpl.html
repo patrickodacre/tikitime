@@ -1,0 +1,33 @@
+<md-button class="md-raised" ui-sref="orders.create-order" ng-click="ctrl.open('right'); ctrl.loadDrinks()">New Order</md-button>
+
+<h1>Orders:</h1>
+<div class="orderFilter">
+	<div class="orderFilter__name">
+		<label for="name">Filter By Name:</label>
+		<input id="name" type="search" ng-model="person" placeholder="filter names..." aria-label="filter names"/>
+	</div>
+	<div class="orderFilter__drink">
+		<label for="drink">Filter By Drink:</label>
+		<input id="drink" type="search" ng-model="drink" placeholder="filter drinks..." aria-label="filter names"/>
+	</div>
+</div>
+
+<div ng-repeat="order in ctrl.ordersArray | filter:{ordered_by:person, drinksArray:drink} | orderBy:'-tikitime' ">
+	<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch flex="100" flex-gt-sm="50">
+		<md-card-title>
+			<md-card-title-text>
+				<span class="md-headline">Tiki Time: {{order.tikitime}}</span>
+				<span class="md-subhead">Ordered By: {{order.ordered_by}}</span>
+				<span class="md-subhead"><strong>Drinks Ordered:</strong></span>
+				<span style="text-transform: capitalize">{{order.drinksArray.join(', ')}}</span>
+				<p>Order Number: {{$id}}</p>
+			</md-card-title-text>
+		</md-card-title>
+		<md-card-actions layout="row" layout-align="end center">
+			<md-button ui-sref="orders.edit-order"
+					   ng-click="ctrl.editOrder(order); ctrl.open('right'); ctrl.loadDrinks()">
+				Edit Order
+			</md-button>
+		</md-card-actions>
+	</md-card>
+</div>

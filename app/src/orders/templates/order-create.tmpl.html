@@ -1,0 +1,44 @@
+<md-toolbar layout="row">
+	<div class="md-toolbar-tools">
+		<h1>Create a New Order:</h1>
+	</div>
+</md-toolbar>
+<md-content class="md-no-momentum">
+	<div layout="column" ng-cloak>
+		<md-content class="md-padding">
+
+			<form
+					role="form"
+					ng-submit="ctrl.createOrder(ctrl.newOrder)"
+			>
+				<md-select placeholder="Who is this order for?" ng-model="ctrl.newOrder.ordered_by"
+						   md-on-open="ctrl.loadPeople()"
+						   style="min-width: 200px;">
+					<div ng-repeat="person in ctrl.people">
+						<md-option ng-value="person.name">{{person.name}}</md-option>
+					</div>
+				</md-select>
+				<p class="md-caption">You have assigned the task to: {{ ctrl.newOrder.ordered_by }}</p>
+
+				<div ng-repeat="drink in ctrl.drinks">
+					<md-checkbox
+							ng-model="ctrl.newOrder.drinks[drink.name]"
+							aria-label="{{drink.name}}"
+					>
+						{{ drink.name }}
+					</md-checkbox>
+				</div>
+
+				<strong><p>Which TikiTime is this for?</p></strong>
+				<md-datepicker ng-model="ctrl.newOrder.tikitime" md-placeholder="Choose a date"
+							   md-min-date="ctrl.minDate"></md-datepicker>
+			</form>
+		</md-content>
+	</div>
+
+
+	<md-button class="md-raised"
+			   ng-click="ctrl.createOrder(ctrl.newOrder); ctrl.close('right')">
+		Save
+	</md-button>
+</md-content>
