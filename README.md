@@ -5,9 +5,9 @@ This is a fun play app to help the employees of The Better Software Company orde
 
 ## Recommended Reading Material
 
-[Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
-[UI Router](https://github.com/angular-ui/ui-router/wiki)
-[Angular Material](https://material.angularjs.org/latest/)
+* [Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
+* [UI Router](https://github.com/angular-ui/ui-router/wiki)
+* [Angular Material](https://material.angularjs.org/latest/)
 
 
 ## Started with Angular Material-Start
