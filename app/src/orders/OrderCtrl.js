@@ -63,7 +63,8 @@
         // Init ctrl
         function activate() {
             return getOrders()
-                    .then(changeOrdersObjToArray);
+                    .then(ordersObjectToArray)
+                    .then(drinksObjToArray);
         }
 
         //////////////////////  GETTING   //////////////////////
@@ -142,13 +143,8 @@
          *
          * @return array Array of all our order objects.
          */
-        function changeOrdersObjToArray() {
-
+        function ordersObjectToArray() {
             ctrl.ordersArray = formattingService.toArray(ctrl.orders);
-
-            for (var i = 0; i < ctrl.ordersArray.length; i++) {
-                drinksObjToNewArray(ctrl.ordersArray[i]);
-            }
             return ctrl.ordersArray;
         }
 
@@ -157,11 +153,26 @@
          *
          * Angular doesn't query object property keys, only their values,
          * so we need to move those drinks into an array that can be queried by the ng-repeat filter.
+         */
+        function drinksObjToArray() {
+
+            // for each order, create a clean drinks array.
+            for (var i = 0; i < ctrl.ordersArray.length; i++) {
+                makeCleanArray(ctrl.ordersArray[i]);
+            }
+            return ctrl.ordersArray;
+        }
+
+        /**
+         * Clean up the array.
+         *
+         * The DB will include false values from when drinks are removed from an order.
+         * We can't include those in the array for obvious reasons.
          *
          * @param orderObject
+         * @returns {Array|*}
          */
-        function drinksObjToNewArray(orderObject) {
-
+        function makeCleanArray(orderObject) {
             var drinkNamesArray = Object.keys(orderObject.drinks);
 
             // Drinks to be queried by ng-repeat filter.
