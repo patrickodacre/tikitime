@@ -1,4 +1,20 @@
-# Angular Material-Start
+# Tikitime
+
+This is a fun play app to help the employees of The Better Software Company order specific drinks for their weekly Tikitime huddle. 
+
+
+## Recommended Reading Material
+
+[Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/README.md)
+[UI Router](https://github.com/angular-ui/ui-router/wiki)
+[Angular Material](https://material.angularjs.org/latest/)
+
+
+## Started with Angular Material-Start
+
+This is a great starter project. It can be found here - https://github.com/angular/material-start/tree/es6
+
+I've preserved the README.md below just in case things change on the home project:
 
 This Material **start** project is a *seed* for AngularJS Material applications. The project contains a sample AngularJS application and is pre-configured to install the Angular framework and a bunch of development and testing tools for instant web development gratification.
 
